@@ -1,16 +1,24 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
-const Task = (props) => {
-    return (<View style={styles.item}>
-        <View style={styles.itemLeft}>
-            <View style={styles.square}></View>
-            <Text> {props.text}</Text>
-        </View>
-        <View style={styles.circular}></View>
-    </View>
-    )
-}
+const Task = ({ text, onDelete }) => {
+    const swipeButtons = [{
+        text: 'Delete',
+        backgroundColor: 'red',
+        underlayColor: 'rgba(0, 0, 0, 0.6)',
+        onPress: onDelete
+    }];
+
+    return (
+            <View style={styles.item}>
+                <View style={styles.itemLeft}>
+                    <View style={styles.square}></View>
+                    <Text>{text}</Text>
+                </View>
+                <View style={styles.circular}></View>
+            </View>
+    );
+};
 
 const styles = StyleSheet.create({
     item: {
@@ -43,5 +51,5 @@ const styles = StyleSheet.create({
         borderRadius: 5
     }
 });
-export default Task;
 
+export default Task;
